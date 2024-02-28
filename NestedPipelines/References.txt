@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/azure/devops/pipelines/process/resources?view=azure-devops&tabs=example#define-a-pipelines-resource
+https://learn.microsoft.com/en-us/azure/devops/pipelines/process/pipeline-triggers?view=azure-devops
