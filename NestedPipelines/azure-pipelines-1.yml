@@ -1,0 +1,20 @@
+resources:
+  pipelines:
+  - pipeline: NIC-POC
+    source: NIC-POC
+    trigger: true
+
+trigger: none
+
+pool:
+  name: BuildPool
+
+steps:
+- script: |
+    echo $(resources.pipeline.NIC-POC.runId)
+  displayName: 'Run a one-line script'
+
+- download: NIC-POC   # pipeline resource identifier.
+  artifact: drop  # artifact to download, optional; defaults to all the artifacts from the resource.
+
+

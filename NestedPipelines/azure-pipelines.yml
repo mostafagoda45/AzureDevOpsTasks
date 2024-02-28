@@ -1,0 +1,27 @@
+# Starter pipeline
+trigger:
+- master
+
+pool:
+  name: BuildPool
+
+steps:
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: 'cert.pem'
+    retryCount: '3'
+    socketTimeout: '300000'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      azure-pipelines.yml
+      azure-pipelines-1.yml
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
